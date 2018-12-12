@@ -92,8 +92,14 @@ public class PersonalizedMovieRecommender implements IRecommender<Movie> {
 		HashMap<String, String> userMovieRating = _ratingMap.get(userid);
 
 		for (String comparingUserId : _ratingMap.keySet()) {
+			double accumulating = 0;
+			
+			if (userid.equals(comparingUserId)) {
+				continue;
+			}				
+			
 			for (String userMovieId : userMovieRating.keySet()) {
-				double accumulating = 0;
+				
 
 				for (String compareUserMovieId : _ratingMap.get(comparingUserId).keySet()) {
 					if (userMovieId.equals(compareUserMovieId)) {
@@ -110,7 +116,7 @@ public class PersonalizedMovieRecommender implements IRecommender<Movie> {
 				}
 			}
 		}
-
+		//System.out.print(SimMax + " - ");
 		return mostSimUserId;
 	}
 

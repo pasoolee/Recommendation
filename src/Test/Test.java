@@ -18,47 +18,47 @@ public class Test {
 		ArrayList<String[]> tempArrayListOfData = new ArrayList<String[]>();
 		HashMap<String, Integer> header;
 		try {
-//			CSVReader movieReader = new CSVReader("datafiles/movie/movies.csv");
-//			tempArrayListOfData = movieReader.getData();
-//			
-//			header = movieReader.getHeader();
-//			
-//			ArrayList<Movie> movies = new ArrayList<Movie>();
-//			
-//			for (String[] data : tempArrayListOfData)
-//			{
-//				movies.add(new Movie(data[header.get("movieId")] ,data[header.get("title")], data[header.get("genres")]));
-//			}
+			CSVReader movieReader = new CSVReader("datafiles/movie/movies.csv");
+			tempArrayListOfData = movieReader.getData();
+			
+			header = movieReader.getHeader();
+			
+			ArrayList<Movie> movies = new ArrayList<Movie>();
+			
+			for (String[] data : tempArrayListOfData)
+			{
+				movies.add(new Movie(data[header.get("movieId")] ,data[header.get("title")], data[header.get("genres")]));
+			}
 			
 			//System.out.println(movies.get(100).getItemId() + " " + movies.get(100).getName());
 			
 			
-//			CSVReader ratingReader = new CSVReader("datafiles/movie/ratings.csv");
-//			tempArrayListOfData = ratingReader.getData();	
-//			
-//			header = ratingReader.getHeader();
-//			//System.out.println(header);
-//			
-//			ArrayList<Rating> ratings = new ArrayList<Rating>();
-//			
-//			for (String[] data : tempArrayListOfData)
-//			{
-//				ratings.add(new Rating(data[header.get("userId")] ,data[header.get("movieId")], data[header.get("rating")]));
-//			}			
+			CSVReader ratingReader = new CSVReader("datafiles/movie/ratings.csv");
+			tempArrayListOfData = ratingReader.getData();	
+			
+			header = ratingReader.getHeader();
+			//System.out.println(header);
+			
+			ArrayList<Rating> ratings = new ArrayList<Rating>();
+			
+			for (String[] data : tempArrayListOfData)
+			{
+				ratings.add(new Rating(data[header.get("userId")] ,data[header.get("movieId")], data[header.get("rating")]));
+			}			
 			
 			//System.out.println(ratings.get(100).getName() + " " + ratings.get(100).getItemId() + " " + ratings.get(100).getRateValue());
 			
-//			Movie[] movieArray = new Movie[movies.size()];
-//			for (int i = 0; i < movies.size(); i++)
-//			{
-//				movieArray[i] = movies.get(i);
-//			}
-//			
-//			Rating[] ratingArray = new Rating[ratings.size()];
-//			for (int i = 0; i < ratings.size(); i++)
-//			{
-//				ratingArray[i] = ratings.get(i);
-//			}
+			Movie[] movieArray = new Movie[movies.size()];
+			for (int i = 0; i < movies.size(); i++)
+			{
+				movieArray[i] = movies.get(i);
+			}
+			
+			Rating[] ratingArray = new Rating[ratings.size()];
+			for (int i = 0; i < ratings.size(); i++)
+			{
+				ratingArray[i] = ratings.get(i);
+			}
 			
 //			popularMovieRecommender popMovieRec = new popularMovieRecommender(movieArray, ratingArray);
 //			
@@ -71,58 +71,58 @@ public class Test {
 //				//System.out.println(Arrays.deepToString(moviesRec[i].getGenre()));
 //			}
 //			
-//			PersonalizedMovieRecommender perMovieRec = new PersonalizedMovieRecommender(movieArray, ratingArray);
+			PersonalizedMovieRecommender perMovieRec = new PersonalizedMovieRecommender(movieArray, ratingArray);
+			
+			perMovieRec.Test();
+			
+//			CSVReader bookReader = new CSVReader("datafiles/book/books.csv");
+//			tempArrayListOfData = bookReader.getData();	
 //			
-//			perMovieRec.Test();
-			
-			CSVReader bookReader = new CSVReader("datafiles/book/books.csv");
-			tempArrayListOfData = bookReader.getData();	
-			
-			header = bookReader.getHeader();
-
-			ArrayList<Movie> _movies = new ArrayList<Movie>();
-			
-			for (String[] data : tempArrayListOfData)
-			{
-				String temp = data[header.get("authors")];	
-				_movies.add(new Movie(data[header.get("book_id")] ,data[header.get("original_title")], temp.replace("%2C", "\\|")));
-			}
-			CSVReader ratingReader = new CSVReader("datafiles/book/ratings.csv");
-			tempArrayListOfData = ratingReader.getData();	
-		
-			header = ratingReader.getHeader();
-			//System.out.println(header);
-		
-			if (!header.containsKey("user_id") || !header.containsKey("book_id") || !header.containsKey("rating")) 
-			{
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("File reading error");
-				alert.setHeaderText("File does not contains the correct data for instantiating the Rating class.");			    
-				alert.showAndWait();	
-				return;					
-			}
-		
-			ArrayList<Rating> _ratings = new ArrayList<Rating>();
-		
-			for (String[] data : tempArrayListOfData)
-			{
-				_ratings.add(new Rating(data[header.get("user_id")] ,data[header.get("book_id")], data[header.get("rating")]));
-			}			
-		
-			//System.out.println(_ratings.size());
-			Movie[] movieArray = new Movie[_movies.size()];
-			for (int i = 0; i < _movies.size(); i++)
-			{
-				movieArray[i] = _movies.get(i);
-				
-			}
-			
-			Rating[] ratingArray = new Rating[_ratings.size()];
-			for (int i = 0; i < _ratings.size(); i++)
-			{
-				ratingArray[i] = _ratings.get(i);
-				
-			}
+//			header = bookReader.getHeader();
+//
+//			ArrayList<Movie> _movies = new ArrayList<Movie>();
+//			
+//			for (String[] data : tempArrayListOfData)
+//			{
+//				String temp = data[header.get("authors")];	
+//				_movies.add(new Movie(data[header.get("book_id")] ,data[header.get("original_title")], temp.replace("%2C", "\\|")));
+//			}
+//			CSVReader ratingReader = new CSVReader("datafiles/book/ratings.csv");
+//			tempArrayListOfData = ratingReader.getData();	
+//		
+//			header = ratingReader.getHeader();
+//			//System.out.println(header);
+//		
+//			if (!header.containsKey("user_id") || !header.containsKey("book_id") || !header.containsKey("rating")) 
+//			{
+//				Alert alert = new Alert(Alert.AlertType.ERROR);
+//				alert.setTitle("File reading error");
+//				alert.setHeaderText("File does not contains the correct data for instantiating the Rating class.");			    
+//				alert.showAndWait();	
+//				return;					
+//			}
+//		
+//			ArrayList<Rating> _ratings = new ArrayList<Rating>();
+//		
+//			for (String[] data : tempArrayListOfData)
+//			{
+//				_ratings.add(new Rating(data[header.get("user_id")] ,data[header.get("book_id")], data[header.get("rating")]));
+//			}			
+//		
+//			//System.out.println(_ratings.size());
+//			Movie[] movieArray = new Movie[_movies.size()];
+//			for (int i = 0; i < _movies.size(); i++)
+//			{
+//				movieArray[i] = _movies.get(i);
+//				
+//			}
+//			
+//			Rating[] ratingArray = new Rating[_ratings.size()];
+//			for (int i = 0; i < _ratings.size(); i++)
+//			{
+//				ratingArray[i] = _ratings.get(i);
+//				
+//			}
 			
 //			for (int i = 0; i < _ratings.size(); i++)
 //			{	
@@ -130,7 +130,7 @@ public class Test {
 //			}
 			
 			
-			popularMovieRecommender popMovieRec = new popularMovieRecommender(movieArray, ratingArray);
+//			popularMovieRecommender popMovieRec = new popularMovieRecommender(movieArray, ratingArray);
 			
 			//popMovieRec.Test();
 			
